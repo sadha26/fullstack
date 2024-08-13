@@ -1,0 +1,74 @@
+
+
+1)
+    /** HTTP **/
+
+        var http=require('http');
+        http.createServer((req,res)=>{
+            res.write(req.url);    //res.write('Helloworld');
+            res.end();
+            console.log('server running..')
+        }).listen(8080)
+::OUTPUT format -> localhost:8080/products-->/products
+::NOTE::
+    Creating the server and display the information in the web page
+
+2)
+    /** FILE SYSTEM **/
+
+        var http=require('http');
+        var fs=require('fs');
+        http.createServer((req,res)=>{
+            fs.readFile('test.txt',(err,data)=>{
+                res.write(data);
+                res.end();
+            })
+        }).listen(8080)
+::OUTPUT:: Hello
+::NOTE::
+    Using read file method it can diplay the information in the file
+
+3)
+    /** USING APPEND **/
+
+        var http=require('http');
+        var fs=require('fs');
+        http.createServer((req,res)=>{
+            fs.appendFile('test.txt',welcome,(err,data)=>{
+                res.write(data);
+                res.end();
+            })
+        }).listen(8080)
+
+::OUTPUT:: Hello welcome
+::NOTE::
+    Using append method we can add text directly to the information in the text file
+
+4)
+    /** WRITE **/
+        var http=require('http');
+        var fs=require('fs');
+        http.createServer((req,res)=>{
+            fs.writeFile('test.txt',sasi engg college,(err,data)=>{
+                res.write(data);
+                res.end();
+            })
+        }).listen(8080)
+
+OUTPUT: sasi engg college
+::NOTE::
+    Using write we can replace the information in the file
+
+5)
+    /** UNLINK **/
+        var http =require('http');
+        var fs = require('fs');
+        http.createServer((req,res)=>{
+            fs.unlink('test.txt',(err)=>{
+                if(err)throw err;
+                console.log("file delected");
+             })
+        }).listen(8081)
+::OUTPUT:: FILE DELETED(test.txt)
+::NOTE::
+    Using unlink method we can delete entire test.txt file
