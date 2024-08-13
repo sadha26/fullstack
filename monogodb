@@ -1,0 +1,58 @@
+
+1)    
+     db.version()
+        ::NOTE::This will show the version of the mongodb server.
+2)
+    show dbs
+        ::NOTE::This will print a list of the databases present on the server.
+3)
+    use training
+        ::NOTE::This will create a new database named training. If a database named training already exists, it will start using it.
+4)
+    db.createCollection("mycollection")
+        ::NOTE::This will create a collection name mycollection inside the training database.
+5)
+    show collections
+        ::NOTE::This will print the list of collections in your current database.
+6)
+    db.mycollection.insert({"color":"white","example":"milk"})
+        ::NOTE:: The above command inserts the json document {“color”:”white”,”example”:”milk”} into the collection.
+    db.mycollection.insert({"color":"blue","example":"sky"})
+        ::NOTE::The above command inserts the json document {“color”:”blue”,”example”:”sky”} into the collection.
+7)  
+    db.languages.insert({"name":"java","type":"object oriented"})
+    db.languages.insert({"name":"python","type":"general purpose"})
+    db.languages.insert({"name":"scala","type":"functional"})
+    db.languages.insert({"name":"c","type":"procedural"})
+    db.languages.insert({"name":"c++","type":"object oriented"})
+   
+    db.mycollection.count()
+        ::NOTE::This command gives you the number of documents in the collection.
+8)
+    db.mycollection.find()
+        ::NOTE::This command lists all the documents in the collection mycollection
+9)
+    db.languages.findOne()
+    db.languages.find({"name":"python"})
+    db.languages.find({},{"name":1})
+        ::NOTE::This command lists all the documents without the name field in the output.
+    db.languages.find({"type":"object oriented"},{"name":1})
+        ::NOTE::This command lists all the “object oriented” languages with only “name” field in the output.
+ 10)
+    UPDATE DOCUMENTS
+    db.collection.updateMany({what documents to find},{$set:{what fields to set}})
+        ::NOTE::The ‘updateMany’ command is used to update documents in a mongodb collection, and it has the following generic syntax.
+    db.languages.updateMany({},{$set:{"description":"programming language"}})
+        ::NOTE::Here we are adding a field description with value programming language to all the documents.
+    db.languages.updateMany({"name":"python"},{$set:{"creator":"Guido van Rossum"}})
+        ::NOTE::Set the creater for python language.
+    db.languages.updateMany({"type":"object oriented"},{$set:{"compiled":true}})
+        ::NOTE::Set a field named compiled with a value true for all the object oriented languages.
+11)
+    DELETE DOCUMENTS
+    db.languages.remove({"name":"scala"})
+        ::NOTE::Delete the scala language document.
+    db.languages.remove({"type":"object oriented"})
+        ::NOTE::Delete the object oriented languages.
+    db.languages.remove({})
+        ::NOTE::Delete all the documents in a collection.
